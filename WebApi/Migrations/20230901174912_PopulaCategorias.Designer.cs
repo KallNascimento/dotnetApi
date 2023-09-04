@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MacorattiCurso.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230901131856_catalogo")]
-    partial class catalogo
+    [Migration("20230901174912_PopulaCategorias")]
+    partial class PopulaCategorias
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,7 @@ namespace MacorattiCurso.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("MacorattiCurso.Domain.Categoria", b =>
+            modelBuilder.Entity("WebApi.Domain.Categoria", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -37,14 +37,16 @@ namespace MacorattiCurso.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Name")
-                        .HasColumnType("text");
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("character varying(80)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Categorias");
                 });
 
-            modelBuilder.Entity("MacorattiCurso.Domain.Produto", b =>
+            modelBuilder.Entity("WebApi.Domain.Produto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -56,15 +58,20 @@ namespace MacorattiCurso.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("Description")
-                        .HasColumnType("text");
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("character varying(300)");
 
                     b.Property<string>("ImageUrl")
                         .HasColumnType("text");
 
                     b.Property<string>("Name")
-                        .HasColumnType("text");
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("character varying(80)");
 
                     b.Property<decimal?>("Price")
+                        .IsRequired()
                         .HasColumnType("numeric");
 
                     b.Property<DateTime>("RegistrationDate")
@@ -80,9 +87,9 @@ namespace MacorattiCurso.Migrations
                     b.ToTable("Produtos");
                 });
 
-            modelBuilder.Entity("MacorattiCurso.Domain.Produto", b =>
+            modelBuilder.Entity("WebApi.Domain.Produto", b =>
                 {
-                    b.HasOne("MacorattiCurso.Domain.Categoria", "Categoria")
+                    b.HasOne("WebApi.Domain.Categoria", "Categoria")
                         .WithMany("Produtos")
                         .HasForeignKey("CategoriaId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -91,7 +98,7 @@ namespace MacorattiCurso.Migrations
                     b.Navigation("Categoria");
                 });
 
-            modelBuilder.Entity("MacorattiCurso.Domain.Categoria", b =>
+            modelBuilder.Entity("WebApi.Domain.Categoria", b =>
                 {
                     b.Navigation("Produtos");
                 });

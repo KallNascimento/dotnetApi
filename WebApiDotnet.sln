@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MacorattiCurso", "MacorattiCurso\MacorattiCurso.csproj", "{A264D214-74BF-4D35-8546-B5E61BA29311}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{A264D214-74BF-4D35-8546-B5E61BA29311}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

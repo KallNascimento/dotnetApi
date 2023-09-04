@@ -22,7 +22,7 @@ namespace MacorattiCurso.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("MacorattiCurso.Domain.Categoria", b =>
+            modelBuilder.Entity("WebApi.Domain.Categoria", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -43,7 +43,7 @@ namespace MacorattiCurso.Migrations
                     b.ToTable("Categorias");
                 });
 
-            modelBuilder.Entity("MacorattiCurso.Domain.Produto", b =>
+            modelBuilder.Entity("WebApi.Domain.Produto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -84,9 +84,9 @@ namespace MacorattiCurso.Migrations
                     b.ToTable("Produtos");
                 });
 
-            modelBuilder.Entity("MacorattiCurso.Domain.Produto", b =>
+            modelBuilder.Entity("WebApi.Domain.Produto", b =>
                 {
-                    b.HasOne("MacorattiCurso.Domain.Categoria", "Categoria")
+                    b.HasOne("WebApi.Domain.Categoria", "Categoria")
                         .WithMany("Produtos")
                         .HasForeignKey("CategoriaId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -95,7 +95,7 @@ namespace MacorattiCurso.Migrations
                     b.Navigation("Categoria");
                 });
 
-            modelBuilder.Entity("MacorattiCurso.Domain.Categoria", b =>
+            modelBuilder.Entity("WebApi.Domain.Categoria", b =>
                 {
                     b.Navigation("Produtos");
                 });
