@@ -9,5 +9,5 @@ public class Categoria : Model
         Produtos = new Collection<Produto>();
     }
 
-    public ICollection<Produto>? Produtos { get; set; }
+    public ICollection<Produto>? Produtos { get; set; } //propriedade de navegação
 }
